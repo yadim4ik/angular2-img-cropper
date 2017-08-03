@@ -2,11 +2,11 @@
 /dist
 src/**/*.js.map
 // src/**/*.d.ts
-src/**/*.js
+// src/**/*.js
 runtime/*.js
 index.js.map
 // index.d.ts
-index.js
+// index.js
 #################
 ## Misc
 #################
