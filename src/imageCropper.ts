@@ -244,7 +244,7 @@ export class ImageCropper extends ImageCropperModel {
             }
             this.center.draw(ctx);
         } else {
-            ctx.fillStyle = 'rgba(192,192,192,1)';
+            ctx.fillStyle = 'rgba(242,234,223,1)';
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         }
     }
