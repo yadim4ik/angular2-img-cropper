@@ -154,6 +154,8 @@ export class ImageCropper extends ImageCropperModel {
 
         // todo get more reliable parent width value.
         let responsiveWidth:number = canvas.parentElement ? canvas.parentElement.clientWidth : 0;
+        let responsiveHeight:number = canvas.parentElement ? canvas.parentElement.clientHeight : 0;
+
         if (responsiveWidth > 0 && this.cropperSettings.dynamicSizing) {
             this.cropCanvas.width = responsiveWidth;
             this.buffer.width = responsiveWidth;
@@ -163,8 +165,14 @@ export class ImageCropper extends ImageCropperModel {
             this.buffer.width = canvas.width;
         }
 
-        this.cropCanvas.height = this.cropHeight;
-        this.buffer.height = canvas.height;
+        if (responsiveHeight > 0 && this.cropperSettings.dynamicSizing) {
+            this.cropCanvas.height = responsiveHeight;
+            this.buffer.height = responsiveHeight;
+        } else {
+            this.cropCanvas.height = this.cropHeight;
+            this.buffer.height = canvas.height;
+        }
+
         this.canvas = canvas;
         this.ctx = <CanvasRenderingContext2D> this.canvas.getContext('2d');
 

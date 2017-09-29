@@ -141,6 +141,7 @@ var ImageCropper = (function (_super) {
         this.buffer = document.createElement('canvas');
         this.cropCanvas = document.createElement('canvas');
         var responsiveWidth = canvas.parentElement ? canvas.parentElement.clientWidth : 0;
+        var responsiveHeight = canvas.parentElement ? canvas.parentElement.clientHeight : 0;
         if (responsiveWidth > 0 && this.cropperSettings.dynamicSizing) {
             this.cropCanvas.width = responsiveWidth;
             this.buffer.width = responsiveWidth;
@@ -150,8 +151,14 @@ var ImageCropper = (function (_super) {
             this.cropCanvas.width = this.cropWidth;
             this.buffer.width = canvas.width;
         }
-        this.cropCanvas.height = this.cropHeight;
-        this.buffer.height = canvas.height;
+        if (responsiveHeight > 0 && this.cropperSettings.dynamicSizing) {
+            this.cropCanvas.height = responsiveHeight;
+            this.buffer.height = responsiveHeight;
+        }
+        else {
+            this.cropCanvas.height = this.cropHeight;
+            this.buffer.height = canvas.height;
+        }
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
         this.draw(this.ctx);
