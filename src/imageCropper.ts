@@ -168,6 +168,7 @@ export class ImageCropper extends ImageCropperModel {
         if (responsiveHeight > 0 && this.cropperSettings.dynamicSizing) {
             this.cropCanvas.height = responsiveHeight;
             this.buffer.height = responsiveHeight;
+            canvas.height = responsiveHeight;
         } else {
             this.cropCanvas.height = this.cropHeight;
             this.buffer.height = canvas.height;
